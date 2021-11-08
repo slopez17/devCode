@@ -5,7 +5,7 @@
         <td>
             <h4>Perfil</h4>
             <p align="justify">
-            Hola! mi nombre es <b>Steven Rodríguez Ortiz</b>, soy de Bogotá - Colombia, actualmente soy estudiante de Ingeniería en Sistemas en la Universidad Nacional de Colombia. 
+            Hola! mi nombre es <b>Nelson Steven Rodríguez Ortiz</b>, soy de Bogotá - Colombia, actualmente soy estudiante de Ingeniería en Sistemas en la Universidad Nacional de Colombia. 
             </p>
             <p align="justify">
             Ingresé a <b>Mision Tic 2022</b> con la intención de aprender desarrollo web y adquirir las habilidades necesarias para poder empezar la vida profesional. 
