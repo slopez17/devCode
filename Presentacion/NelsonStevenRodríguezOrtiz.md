@@ -1,4 +1,4 @@
-👨‍💻: [Steven-Rodriguez-git](https://github.com/Steven-Rodriguez-git "Github User")
+:man_technologist: [Steven-Rodriguez-git](https://github.com/Steven-Rodriguez-git "Github User")
 <div align="center">
 <table>
     <tr>
