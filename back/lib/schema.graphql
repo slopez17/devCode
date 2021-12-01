@@ -1,0 +1,48 @@
+type Usuario {
+    _id: ID!
+    email: String!
+    numId: String!
+    name: String!
+    password: String!
+    role: String!
+    state: String!
+}
+
+type Proyecto {
+    _id: ID!
+    projectName: String!
+    generalObjective: String!
+    specificObjetive: String!
+    budget: String!
+    initialDate: String!
+    finalDate: String!
+    leaderId: ID!
+    leaderName: String!
+    stateProyect: String!
+    fase: String!
+}
+
+type Query {
+    "Devuelve todos los usuarios"
+    getUsuarios: [Usuario]
+    "Devuelve un usuario"
+    getUsuario(id: ID!): Usuario
+    "Devuelve todos los proyectos"
+    getProyectos: [Proyecto]
+    "Devuelve un usuario"
+    getProyecto(id: ID!): Proyecto
+}
+
+input UsuarioInput{
+    email: String!
+    numId: String!
+    name: String!
+    password: String!
+    role: String!
+    state: String!
+}
+
+type Mutation {
+    "Crea un usuario"
+    createUsuario(input: UsuarioInput!): Usuario
+}
