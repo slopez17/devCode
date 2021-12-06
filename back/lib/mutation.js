@@ -5,7 +5,7 @@ const { ObjectId } = require('mongodb')
 const errorHandler = require('./errorHandler')
 
 module.exports = {
-    createUsuario: async (root, { input }) => {
+    createUsuario: async (root, {input}) => {
         let db
         let usuario
         try {
@@ -15,7 +15,7 @@ module.exports = {
         } catch (error) {
             errorHandler(error)
         }
-        return usuario
+        return input
     },
     editUsuario: async (root, { _id, input }) => {
         let db
@@ -33,5 +33,34 @@ module.exports = {
             errorHandler(error)
         }
         return usuario
+    },
+    createProyecto: async (root, { input }) => {
+        let db
+        let proyecto
+        try {
+            db = await connectDb()
+            proyecto = await db.collection('proyectos').insertOne(input)
+            input._id = proyecto.insertedId
+        } catch (error) {
+            errorHandler(error)
+        }
+        return input
+    },
+    editProyecto: async (root, { _id, input }) => {
+        let db
+        let proyecto
+        try {
+            db = await connectDb()
+            await db.collection('proyectos').updateOne(
+                { _id: ObjectId(_id)},
+                {$set: input}
+            )
+            proyecto = await db.collection('proyectos').findOne(
+                {_id: ObjectId(_id)}
+            )
+        } catch (error) {
+            errorHandler(error)
+        }
+        return proyecto
     }
 }
