@@ -1,25 +1,25 @@
 type Usuario {
-    _id: ID!
-    email: String!
-    numId: String!
-    name: String!
-    password: String!
-    role: String!
-    state: String!
+    _id: ID
+    email: String
+    numId: String
+    name: String
+    password: String
+    role: String
+    state: String
 }
 
 type Proyecto {
-    _id: ID!
-    projectName: String!
-    generalObjective: String!
-    specificObjetive: String!
-    budget: String!
-    initialDate: String!
-    finalDate: String!
-    leaderId: ID!
-    leaderName: String!
-    stateProyect: String!
-    fase: String!
+    _id: ID
+    projectName: String
+    generalObjective: String
+    specificObjetive: String
+    budget: String
+    initialDate: String
+    finalDate: String
+    leaderId: ID
+    leaderName: String
+    stateProyect: String
+    fase: String
 }
 
 type Query {
@@ -49,9 +49,39 @@ input UsuarioEditInput{
     password: String
 }
 
+input ProyectoInput{
+    projectName: String!
+    generalObjective: String!
+    specificObjetive: String!
+    budget: String!
+    initialDate: String!
+    finalDate: String!
+    leaderId: ID!
+    leaderName: String!
+    stateProyect: String!
+    fase: String!
+}
+
+input ProyectoEditInput{
+    projectName: String
+    generalObjective: String
+    specificObjetive: String
+    budget: String
+    initialDate: String
+    finalDate: String
+    leaderId: ID
+    leaderName: String
+    stateProyect: String
+    fase: String
+}
+
 type Mutation {
     "Crea un usuario"
     createUsuario(input: UsuarioInput!): Usuario
     "Editar o Actualizar Usuario"
     editUsuario(_id: ID!, input: UsuarioEditInput): Usuario
+    "Crea un Proyecto"
+    createProyecto(input: ProyectoInput!): Proyecto
+    "Editar o Actualizar Proyecto"
+    editProyecto(_id: ID!, input: ProyectoEditInput): Proyecto
 }
