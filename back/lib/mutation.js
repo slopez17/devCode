@@ -62,5 +62,63 @@ module.exports = {
             errorHandler(error)
         }
         return proyecto
+    },
+    createInscripcion: async (root, { input }) => {
+        let db
+        let inscripcion
+        try {
+            db = await connectDb()
+            inscripcion = await db.collection('inscripciones').insertOne(input)
+            input._id = inscripcion.insertedId
+        } catch (error) {
+            errorHandler(error)
+        }
+        return input
+    },
+    editInscripcion: async (root, { _id, input }) => {
+        let db
+        let inscripcion
+        try {
+            db = await connectDb()
+            await db.collection('inscripciones').updateOne(
+                { _id: ObjectId(_id)},
+                {$set: input}
+            )
+            proyecto = await db.collection('inscripciones').findOne(
+                {_id: ObjectId(_id)}
+            )
+        } catch (error) {
+            errorHandler(error)
+        }
+        return inscripcion
+    },
+    createAvance: async (root, { input }) => {
+        let db
+        let avance
+        try {
+            db = await connectDb()
+            avance = await db.collection('avances').insertOne(input)
+            input._id = avance.insertedId
+        } catch (error) {
+            errorHandler(error)
+        }
+        return input
+    },
+    editAvance: async (root, { _id, input }) => {
+        let db
+        let avance
+        try {
+            db = await connectDb()
+            await db.collection('avances').updateOne(
+                { _id: ObjectId(_id)},
+                {$set: input}
+            )
+            avance = await db.collection('avances').findOne(
+                {_id: ObjectId(_id)}
+            )
+        } catch (error) {
+            errorHandler(error)
+        }
+        return avance
     }
 }
