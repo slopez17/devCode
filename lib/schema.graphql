@@ -1,0 +1,145 @@
+enum Role {
+    Estudiante
+    Lider
+    Administrador
+}
+
+enum UserState {
+    Pendiente
+    Autorizado
+    No autorizado
+}
+
+enum ProjectState {
+    Activo
+    Inactivo
+}
+
+enum ProjectPhase {
+    Iniciado
+    En desarrollo
+    Terminado
+}
+
+enum EntryState {
+    Aceptado
+    Rechazado
+}
+
+type User {
+    _id: ID!
+    name: String
+    numId: String
+    email: String! 
+    role: Role!
+    state: UserState!
+}
+
+type Project {
+    _id: ID!
+    name: String!
+    generalPurpose: String!
+    specificPurpose: String!
+    budget: String!
+    startDate: String
+    endDate: String
+    leaderId: ID!
+    state: ProjectState!
+    phase: ProjectPhase
+}
+
+type Entry {
+    _id: ID!
+    projectId: ID!
+    studentId: ID!
+    state: EntryState
+    startDate: String
+    endDate: String
+}
+
+type Advance {
+    _id: ID!
+    projectId: ID!
+    date: String!
+    description: String!
+    leaderObservations: String
+}
+
+type Query {
+    "Autenticar usuario"
+    authUser (email: String!, password: String!): Boolean  
+    "Consultar todos los usuarios"
+    getUsers (role: Role): [User]
+    "Consultar todos los proyectos"
+    getProjects (leaderId: ID): [Project]
+    "Consultar todas las inscripciones"
+    getEntries (projectId: [ID]): [Entry]
+}
+
+input CreateUserInput {
+    name: String!
+    numId: String!
+    email: String! 
+    password: String!
+    role: Role!
+}
+
+input UpdateUserInput {
+    name: String
+    numId: String
+    email: String
+    password: String
+    role: Role
+    state: UserState
+}
+
+input CreateProjectInput {
+    name: String!
+    generalPurpose: String!
+    specificPurpose: String!
+    budget: Int!
+    leaderId: ID!
+}
+
+input UpdateProjectInput {
+    name: String
+    generalPurpose: String
+    specificPurpose: String
+    budget: String
+    startDate: String
+    endDate: String
+    leaderId: ID
+    state: ProjectState
+    phase: ProjectPhase
+}
+
+input CreateEntryInput {
+    projectId: ID!
+    studentId: ID! 
+}
+
+input UpdateEntryInput {
+    projectId: ID
+    studentId: ID
+    state: EntryState
+    startDate: String
+    endDate: String
+}
+
+type Mutation {
+    "Crear usuario"
+    createUser(input: CreateUserInput!): User
+    "Actualizar usuario"
+    updateUser(_id: ID!, input: UpdateUserInput): User
+    "Crear proyecto"
+    createProject(input: CreateProjectInput!): Project
+    "Actualizar proyecto"
+    updateProject(_id: ID!, input: UpdateProjectInput): Project
+    "Crear inscripción"
+    createEntry(input: CreateEntryInput!): Entry
+    "Actualizar inscripción"
+    updateEntry(_id: ID!, input: UpdateEntryInput): Entry
+}
+
+
+
