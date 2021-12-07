@@ -41,7 +41,7 @@ type Avance {
 
 type Query {
   "Devuelve todos los usuarios, puede filtrar por su rol"
-  getUsuarios (role: Role): [Usuario]
+  getUsuarios (role: String): [Usuario]
   "Devuelve un usuario"
   getUsuario(id: ID!): Usuario
   "Devuelve todos los proyectos, puede filtrar por lider"
