@@ -5,12 +5,13 @@ const { ObjectId } = require('mongodb')
 const errorHandler = require('./errorHandler')
 
 module.exports = {
-    getUsuarios: async () => {
+    getUsuarios: async (root, { role }) => {
         let db
         let usuarios = []
         try {
             db = await connectDb()
-            usuarios = await db.collection('usuarios').find().toArray()
+            usuarios = role ? await db.collection('usuarios').find({ role: role }).toArray() :
+                await db.collection('usuarios').find().toArray()
         } catch (error) {
             errorHandler(error)
         }
@@ -27,12 +28,12 @@ module.exports = {
         }
         return usuario
     },
-    getProyectos: async () => {
+    getProyectos: async (root, { leaderId }) => {
         let db
         let proyectos = []
         try {
             db = await connectDb()
-            proyectos = await db.collection('proyectos').find().toArray()
+            proyectos = leaderId ? await db.collection('proyectos').find({leaderId: leaderId}).toArray() : await db.collection('proyectos').find().toArray()
         } catch (error) {
             errorHandler(error)
         }
@@ -49,12 +50,14 @@ module.exports = {
         }
         return proyecto
     },
-    getInscripciones: async () => {
+    getInscripciones: async (root, { projectId }) => {
         let db
         let inscripciones = []
         try {
             db = await connectDb()
-            inscripciones = await db.collection('inscripciones').find().toArray()
+            inscripciones = projectId.length > 0 ?
+                await db.collection('inscripciones').find({ projectId: { $in: projectId } }).toArray() :
+                await db.collection('inscripciones').find().toArray()
         } catch (error) {
             errorHandler(error)
         }

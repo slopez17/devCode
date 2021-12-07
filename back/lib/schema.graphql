@@ -40,16 +40,16 @@ type Avance {
 }
 
 type Query {
-  "Devuelve todos los usuarios"
-  getUsuarios: [Usuario]
+  "Devuelve todos los usuarios, puede filtrar por su rol"
+  getUsuarios (role: Role): [Usuario]
   "Devuelve un usuario"
   getUsuario(id: ID!): Usuario
-  "Devuelve todos los proyectos"
-  getProyectos: [Proyecto]
+  "Devuelve todos los proyectos, puede filtrar por lider"
+  getProyectos (leaderId: ID): [Proyecto]
   "Devuelve un Proyecto"
   getProyecto(id: ID!): Proyecto
-  "Devuelve todos las Inscripciones"
-  getInscripciones: [Inscripcion]
+  "Devuelve todos las Inscripciones, puede filtrar por proyectos"
+  getInscripciones (projectId: [ID]): [Inscripcion]
   "Devuelve una Inscripcion"
   getInscripcion(id: ID!): Inscripcion
   "Devuelve todos los Avances"

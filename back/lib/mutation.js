@@ -6,16 +6,20 @@ const errorHandler = require('./errorHandler')
 
 module.exports = {
     createUsuario: async (root, {input}) => {
+        const defaults = {
+            state: 'Pendiente'
+        };
+        const nuevoUsuario = Object.assign(input, defaults);
         let db
         let usuario
         try {
             db = await connectDb()
-            usuario = await db.collection('usuarios').insertOne(input)
-            input._id = usuario.insertedId
+            usuario = await db.collection('usuarios').insertOne(nuevoUsuario)
+            nuevoUsuario._id = usuario.insertedId
         } catch (error) {
             errorHandler(error)
         }
-        return input
+        return nuevoUsuario
     },
     editUsuario: async (root, { _id, input }) => {
         let db
@@ -35,16 +39,20 @@ module.exports = {
         return usuario
     },
     createProyecto: async (root, { input }) => {
+        const defaults = {
+            state: 'Inactivo'
+        };
+        const nuevoProyecto = Object.assign(input, defaults);
         let db
         let proyecto
         try {
             db = await connectDb()
-            proyecto = await db.collection('proyectos').insertOne(input)
-            input._id = proyecto.insertedId
+            proyecto = await db.collection('proyectos').insertOne(nuevoProyecto)
+            nuevoProyecto._id = proyecto.insertedId
         } catch (error) {
             errorHandler(error)
         }
-        return input
+        return nuevoProyecto
     },
     editProyecto: async (root, { _id, input }) => {
         let db
