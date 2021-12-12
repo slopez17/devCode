@@ -19,8 +19,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
     "standard": "^16.0.4"
-  }
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "description": ""
 }
