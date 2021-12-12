@@ -68,12 +68,22 @@ type Advance {
 type Query {
     "Autenticar usuario"
     authUser (email: String!, password: String!): Boolean  
+    "Consultar usuario"
+    getUser (id: ID!): User
     "Consultar todos los usuarios"
     getUsers (role: Role): [User]
+    "Consultar proyecto"
+    getProject (id: ID!): Project
     "Consultar todos los proyectos"
     getProjects (leaderId: ID): [Project]
+    "Consultar inscripcion"
+    getEntry (id: ID!): Entry
     "Consultar todas las inscripciones"
     getEntries (projectId: [ID]): [Entry]
+    "Consultar avance"
+    getAdvance (id: ID!): Advance
+    "Consultar todas los avances"
+    getAdvances (projectId: [ID]): [Advance]
 }
 
 input CreateUserInput {
@@ -126,6 +136,17 @@ input UpdateEntryInput {
     endDate: String
 }
 
+input CreateAdvanceInput {
+    projectId: ID!
+    date: String!
+    description: String!
+}
+
+input UpdateAdvanceInput {
+    description: String
+    leaderObservations: String
+}
+
 type Mutation {
     "Crear usuario"
     createUser(input: CreateUserInput!): User
@@ -139,6 +160,10 @@ type Mutation {
     createEntry(input: CreateEntryInput!): Entry
     "Actualizar inscripción"
     updateEntry(_id: ID!, input: UpdateEntryInput): Entry
+    "Crear avance"
+    createAdvance(input: CreateAdvanceInput!): Advance
+    "Actualizar avance"
+    updateAdvance(_id: ID!, input: UpdateAdvanceInput): Advance
 }
 
 
