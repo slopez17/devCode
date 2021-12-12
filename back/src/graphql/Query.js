@@ -1,6 +1,5 @@
-'use strict'
-
-const connectDb = require('../lib/db')
+// import Message from "../../models/Message";
+const connectDb = require('./database')
 const { ObjectId } = require('mongodb')
 const errorHandler = require('./errorHandler')
 
@@ -95,5 +94,5 @@ module.exports = {
             errorHandler(error)
         }
         return avance
-    },
+    }
 }

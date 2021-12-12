@@ -1,6 +1,6 @@
 'use strict'
 
-const connectDb = require('../lib/db')
+const connectDb = require('./database')
 const { ObjectId } = require('mongodb')
 const errorHandler = require('./errorHandler')
 
