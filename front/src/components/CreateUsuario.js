@@ -29,8 +29,9 @@ const CrearUsuario = () => {
   const [numId, setNumId] = useState("")
   const [name, setName] = useState("")
   const [password, setPassword] = useState("")
+  const [passwordConfirm, setPasswordConfirm] = useState("")
   const [role, setRole] = useState("")
-  const [state, setState] = useState("")
+  const [state, setState] = useState("Pendiente")
 
   const [createUsuario] = useMutation(CREATE_USUARIO)
   
@@ -46,36 +47,49 @@ const CrearUsuario = () => {
                 window.location.href = "/";
               }}
             >
-            <div className="form-group">
-                <input
-                  type="text"
-                  placeholder="email"
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-                  className="form-control"
-                />
-              </div>
               <div className="form-group">
+                <label>
+                  Nombre completo:
+                </label>
                 <input
                   type="text"
-                  placeholder="No Documento"
-                  value={numId}
-                  onChange={e => setNumId(e.target.value)}
-                  className="form-control"
-                />
-              </div>
-              <div className="form-group">
-                <input
-                  type="text"
-                  placeholder="Nombre"
+                  placeholder="Pedro Perez González"
                   onChange={e => setName(e.target.value)}
                   value={name}
                   className="form-control"
                 ></input>
               </div>
               <div className="form-group">
+                <label>
+                Documento de identidad:
+                </label>
                 <input
                   type="text"
+                  placeholder="32685608"
+                  value={numId}
+                  onChange={e => setNumId(e.target.value)}
+                  className="form-control"
+                />
+              </div>
+              <div className="form-group">
+                <label>
+                  Correo electrónico:
+                </label>
+                <input
+                  type="email"
+                  placeholder="pedro01@ejemplo.com"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  className="form-control"
+                />
+              </div>
+                
+              <div className="form-group">
+                <label>
+                  Contraseña:
+                </label>
+                <input
+                  type="password"
                   placeholder="Contraseña"
                   onChange={e => setPassword(e.target.value)}
                   value={password}
@@ -83,20 +97,41 @@ const CrearUsuario = () => {
                 ></input>
               </div>
               <div className="form-group">
+                <label>
+                  Confirmar contraseña:
+                </label>
                 <input
-                  type="text"
-                  placeholder="Rol"
+                  type="password"
+                  placeholder="Contraseña"
+                  onChange={e => setPasswordConfirm(e.target.value)}
+                  value={passwordConfirm}
+                  className="form-control"
+                ></input>
+              </div>  
+              
+              <div className="form-group">
+                <label>
+                  Rol:
+                </label>
+                <select
                   onChange={e => setRole(e.target.value)}
                   value={role}
                   className="form-control"
-                ></input>
+                >
+                  <option selected disabled="disabled" value=''>Seleccione una opción</option>
+                  <option>Estudiante</option>
+                  <option>Lider</option>
+                  <option>Administrador</option>
+                </select>
               </div>
               <div className="form-group">
+                <label>
+                  Estado
+                </label>
                 <input
+                  readOnly
                   type="text"
-                  placeholder="Estado"
-                  onChange={e => setState(e.target.value)}
-                  value={state}
+                  value="Pendiente"
                   className="form-control"
                 ></input>
               </div>
