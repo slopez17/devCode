@@ -16,7 +16,7 @@ type Proyecto {
   budget: String
   initialDate: String
   finalDate: String
-  leaderId: ID
+  leaderId: String
   leaderName: String
   stateProyect: String
   fase: String
@@ -81,7 +81,7 @@ input ProyectoInput {
   budget: String!
   initialDate: String!
   finalDate: String!
-  leaderId: ID!
+  leaderId: String!
   leaderName: String!
   stateProyect: String!
   fase: String!
@@ -94,7 +94,7 @@ input ProyectoEditInput {
   budget: String
   initialDate: String
   finalDate: String
-  leaderId: ID
+  leaderId: String
   leaderName: String
   stateProyect: String
   fase: String
