@@ -29,6 +29,11 @@ export const Navigation = () => (
             Usuarios
           </Link>
         </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/list-proyects">
+            Proyectos
+          </Link>
+        </li>
       </ul>
     </div>
   </nav>

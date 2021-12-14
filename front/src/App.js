@@ -1,11 +1,13 @@
 import React from "react";
 import CrearUsuario from "./components/CreateUsuario";
 import UsuariosList from "./components/UsuariosList";
+import ProyectosList from "./components/ProyectosList";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import { Navigation } from "./components/Navbar";
 
 import "bootswatch/dist/lux/bootstrap.min.css";
+
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={UsuariosList} />
           <Route exact path="/new-usuario" component={CrearUsuario} />
+          <Route exact path="/list-proyects" component={ProyectosList} />
         </Switch>
       </div>
     </Router>
