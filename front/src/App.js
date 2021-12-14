@@ -2,6 +2,7 @@ import React from "react";
 import CrearUsuario from "./components/CreateUsuario";
 import UsuariosList from "./components/UsuariosList";
 import ProyectosList from "./components/ProyectosList";
+import Login from "./components/Login";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import { Navigation } from "./components/Navbar";
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/" component={UsuariosList} />
           <Route exact path="/new-usuario" component={CrearUsuario} />
           <Route exact path="/list-proyects" component={ProyectosList} />
+          <Route exact path="/login" component={Login} />
         </Switch>
       </div>
     </Router>
