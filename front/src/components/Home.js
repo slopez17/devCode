@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from 'react-router-dom'
 
-export const Navigation = () => (
+export const Home = () => (
   <nav className="navbar navbar-expand-lg navbar-light bg-light">
     <Link className="navbar-brand" to="/">
       DevCode
@@ -28,27 +28,7 @@ export const Navigation = () => (
           <Link className="nav-link" to="/login">
             Login
           </Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/list-users">
-            Usuarios
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/create-proyect">
-            Crear Proyecto
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/list-proyects">
-            Proyectos
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/">
-            Salir
-          </Link>
-        </li>
+          </li>
       </ul>
     </div>
   </nav>

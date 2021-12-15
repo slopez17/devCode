@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useMutation } from "@apollo/react-hooks";
-import { gql } from "apollo-boost";
 
 import {
   Button,
