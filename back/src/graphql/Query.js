@@ -69,7 +69,7 @@ module.exports = {
         let inscripciones = []
         try {
             db = await connectDb()
-            inscripciones = projectId.length > 0 ?
+            inscripciones = projectId ?
                 await db.collection('inscripciones').find({ projectId: { $in: projectId } }).toArray() :
                 await db.collection('inscripciones').find().toArray()
         } catch (error) {
