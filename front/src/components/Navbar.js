@@ -20,16 +20,6 @@ export const Navigation = () => (
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav">
         <li className="nav-item">
-          <Link className="nav-link" to="/new-usuario">
-            Registro
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/login">
-            Login
-          </Link>
-        </li>
-        <li className="nav-item">
           <Link className="nav-link" to="/list-users">
             Usuarios
           </Link>
