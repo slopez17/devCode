@@ -5,6 +5,7 @@ import CrearIscripcion from "./components/CreateInscription";
 import ProyectosList from "./components/ProyectosList";
 import InscripcionesList from "./components/InscripcionesList";
 import CrearProyecto from "./components/CrearProyecto";
+import CrearAvance from "./components/CrearAvance";
 import Login from "./components/Login";
 import { Home } from "./components/Home";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -12,6 +13,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Navigation } from "./components/Navbar";
 
 import "bootswatch/dist/lux/bootstrap.min.css";
+
 
 function App() {
   return (
@@ -25,6 +27,7 @@ function App() {
           <Route exact path="/inscripciones" component={InscripcionesList} />
           <Route exact path="/list-proyects" component={ProyectosList} />
           <Route exact path="/create-proyect" component={CrearProyecto} />
+          <Route exact path="/create-avance" component={CrearAvance} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/" component={Home} />
         </Switch>

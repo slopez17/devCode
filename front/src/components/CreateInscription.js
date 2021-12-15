@@ -8,7 +8,7 @@ const CREATE_INSCRIPCION = gql`
     $studentId: String!,
     $state: String!,
     $startDate: String!,
-    $endDate: String!
+    $endDate: String
   ) { createInscripcion( input:{
     projectId: $projectId,
     studentId: $studentId,
@@ -26,7 +26,7 @@ const CrearIscripcion = () => {
     
     const [projectId, setprojectId] = useState("")
     const [studentId, setstudentId] = useState("")
-    const [state, setstate] = useState("")
+    const [state, setstate] = useState("Pendiente")
     const [startDate, setstartDate] = useState("")
     const [endDate, setendDate] = useState("")
    
@@ -45,7 +45,6 @@ const CrearIscripcion = () => {
                 window.location.href = "/inscripciones";
               }}
             >
-
               <div className="form-group">
                 <input
                   type="text"
@@ -65,32 +64,38 @@ const CrearIscripcion = () => {
                 />
               </div>
               <div className="form-group">
-                <textarea
+                <input
                   type="text"
                   placeholder="Estado"
-                  onChange={e => setstate(e.target.value)}
                   value={state}
+                  onChange={e => setstate(e.target.value)}
                   className="form-control"
-                ></textarea>
+                />
               </div>
               <div className="form-group">
-                <textarea
-                  type="text"
-                  placeholder="Fecha Inicial"
+                <label>
+                  Fecha de Inicio:
+                </label>
+                <input
+                  type="date"
+                  placeholder="2021-06-05"
                   onChange={e => setstartDate(e.target.value)}
                   value={startDate}
                   className="form-control"
-                ></textarea>
+                ></input>
               </div>
               <div className="form-group">
-                <textarea
-                  type="text"
-                  placeholder="FechaFinal"
+                <label>
+                  Fecha de Finalización:
+                </label>
+                <input
+                  type="date"
+                  placeholder="2021-06-05"
                   onChange={e => setendDate(e.target.value)}
                   value={endDate}
                   className="form-control"
-                ></textarea>
-              </div>  
+                ></input>
+              </div>
               <button className="btn btn-success btn-block">Guardar</button>
             </form>
           </div>
