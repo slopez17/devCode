@@ -22,7 +22,7 @@ function App() {
           <Route exact path="/list-users" component={UsuariosList} />
           <Route exact path="/new-usuario" component={CrearUsuario} />
           <Route exact path="/new-inscripcion" component={CrearIscripcion} />
-          <Route exact path="/Inscripcion" component={InscripcionesList} />
+          <Route exact path="/inscripciones" component={InscripcionesList} />
           <Route exact path="/list-proyects" component={ProyectosList} />
           <Route exact path="/create-proyect" component={CrearProyecto} />
           <Route exact path="/login" component={Login} />

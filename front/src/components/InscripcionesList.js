@@ -4,7 +4,7 @@ import { gql } from "apollo-boost"
 
 const GET_INSCRIPCIONES = gql `
   {
-  getUsuarios{
+  getInscripciones{
     _id
     projectId
     studentId

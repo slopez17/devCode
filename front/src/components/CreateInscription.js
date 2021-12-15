@@ -9,14 +9,13 @@ const CREATE_INSCRIPCION = gql`
     $state: String!,
     $startDate: String!,
     $endDate: String!
-  ) { createInscripcion(
+  ) { createInscripcion( input:{
     projectId: $String,
     studentId: $String,
     state: $String,
     startDate: $String,
-    endDate: String){
-        projectId
-    }
+    endDate: String
+    })
   }
 `;
 
