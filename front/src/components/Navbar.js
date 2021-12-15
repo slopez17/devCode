@@ -30,7 +30,7 @@ export const Navigation = () => (
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/">
+          <Link className="nav-link" to="/list-users">
             Usuarios
           </Link>
         </li>
@@ -52,6 +52,11 @@ export const Navigation = () => (
         <li className="nav-item">
           <Link className="nav-link" to="/list-proyects">
             Proyectos
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/">
+            Salir
           </Link>
         </li>
       </ul>
