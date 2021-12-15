@@ -9,11 +9,13 @@ const CREATE_AVANCE = gql`
     $avanceDate: String!,
     $leaderOb: String
   ) { createAvance( input:{
-    projectId: $String,
-    description: $String,
-    avanceDate: $String,
-    leaderOb: String
-    })
+    projectId: $projectId,
+    description: $description,
+    avanceDate: $avanceDate,
+    leaderOb: $leaderOb
+    }){
+      projectId
+    }
   }
 `;
 
@@ -26,7 +28,7 @@ const CrearAvance = () => {
     const [leaderOb, setleaderOb] = useState("")
    
 
-    const [CreateAvance] = useMutation(CREATE_AVANCE);
+    const [createAvance] = useMutation(CREATE_AVANCE);
 
     return (
     <div className="row">
@@ -36,7 +38,7 @@ const CrearAvance = () => {
             <form
               onSubmit={async e => {
                 e.preventDefault();
-                await CreateAvance({ variables: { projectId, description, avanceDate, leaderOb } });
+                await createAvance({ variables: { projectId, description, avanceDate, leaderOb } });
                 window.location.href = "/";
               }}
             >

@@ -46,6 +46,7 @@ const CrearUsuario = () => {
           <Button
             color="primary"
             type="submit"
+            href="/list-users"
           >
             Login
           </Button>
