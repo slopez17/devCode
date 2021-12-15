@@ -31,7 +31,7 @@ const CrearUsuario = () => {
   const [password, setPassword] = useState("")
   const [passwordConfirm, setPasswordConfirm] = useState("")
   const [role, setRole] = useState("")
-  const [state, setState] = useState("Pendiente")
+  const [state] = useState("Pendiente")
 
   const [createUsuario] = useMutation(CREATE_USUARIO)
   
