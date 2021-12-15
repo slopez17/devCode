@@ -10,12 +10,14 @@ const CREATE_INSCRIPCION = gql`
     $startDate: String!,
     $endDate: String!
   ) { createInscripcion( input:{
-    projectId: $String,
-    studentId: $String,
-    state: $String,
-    startDate: $String,
-    endDate: String
-    })
+    projectId: $projectId,
+    studentId: $studentId,
+    state: $state,
+    startDate: $startDate,
+    endDate: $endDate
+    }){
+      projectId
+    }
   }
 `;
 
@@ -40,7 +42,7 @@ const CrearIscripcion = () => {
               onSubmit={async e => {
                 e.preventDefault();
                 await createInscripcion({ variables: { projectId, studentId, state, startDate, endDate } });
-                window.location.href = "/";
+                window.location.href = "/inscripciones";
               }}
             >
 
