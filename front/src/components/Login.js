@@ -56,7 +56,7 @@ const CrearUsuario = () => {
       <br />
       <br />
 
-      <a tag="a" href="/register">Crea tu cuenta</a>
+      <a tag="a" href="/new-usuario">Crea tu cuenta</a>
       
     </Container>
 )

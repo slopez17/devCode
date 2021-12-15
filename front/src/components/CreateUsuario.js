@@ -44,7 +44,7 @@ const CrearUsuario = () => {
               onSubmit={async e => {
                 e.preventDefault();
                 await createUsuario({ variables: { email, numId, name, password, role, state } })
-                window.location.href = "/";
+                window.location.href = "/login";
               }}
             >
               <div className="form-group">
