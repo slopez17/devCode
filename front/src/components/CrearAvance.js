@@ -2,34 +2,31 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 
-const CREATE_INSCRIPCION = gql`
-  mutation CreateInscripcion(
+const CREATE_AVANCE = gql`
+  mutation CreateAvance(
     $projectId: String!,
-    $studentId: String!,
-    $state: String!,
-    $startDate: String!,
-    $endDate: String
-  ) { createInscripcion( input:{
+    $description: String!,
+    $avanceDate: String!,
+    $leaderOb: String
+  ) { createAvance( input:{
     projectId: $String,
-    studentId: $String,
-    state: $String,
-    startDate: $String,
-    endDate: String
+    description: $String,
+    avanceDate: $String,
+    leaderOb: String
     })
   }
 `;
 
 
-const CrearIscripcion = () => {
+const CrearAvance = () => {
     
     const [projectId, setprojectId] = useState("")
-    const [studentId, setstudentId] = useState("")
-    const [state, setstate] = useState("Pendiente")
-    const [startDate, setstartDate] = useState("")
-    const [endDate, setendDate] = useState("")
+    const [description, setdescription] = useState("")
+    const [avanceDate, setavanceDate] = useState("")
+    const [leaderOb, setleaderOb] = useState("")
    
 
-    const [createInscripcion] = useMutation(CREATE_INSCRIPCION);
+    const [CreateAvance] = useMutation(CREATE_AVANCE);
 
     return (
     <div className="row">
@@ -39,7 +36,7 @@ const CrearIscripcion = () => {
             <form
               onSubmit={async e => {
                 e.preventDefault();
-                await createInscripcion({ variables: { projectId, studentId, state, startDate, endDate } });
+                await CreateAvance({ variables: { projectId, description, avanceDate, leaderOb } });
                 window.location.href = "/";
               }}
             >
@@ -55,44 +52,32 @@ const CrearIscripcion = () => {
               <div className="form-group">
                 <input
                   type="text"
-                  placeholder="ID Estudiante"
-                  value={studentId}
-                  onChange={e => setstudentId(e.target.value)}
+                  placeholder="Descripcion"
+                  value={description}
+                  onChange={e => setdescription(e.target.value)}
                   className="form-control"
                 />
+              </div>
+              <div className="form-group">
+                <label>
+                  Fecha del Avance:
+                </label>
+                <input
+                  type="date"
+                  placeholder="2021-06-05"
+                  onChange={e => setavanceDate(e.target.value)}
+                  value={avanceDate}
+                  className="form-control"
+                ></input>
               </div>
               <div className="form-group">
                 <input
                   type="text"
-                  placeholder="Estado"
-                  value={state}
-                  onChange={e => setstate(e.target.value)}
+                  placeholder="Observacion Lider"
+                  value={leaderOb}
+                  onChange={e => setleaderOb(e.target.value)}
                   className="form-control"
                 />
-              </div>
-              <div className="form-group">
-                <label>
-                  Fecha de Inicio:
-                </label>
-                <input
-                  type="date"
-                  placeholder="2021-06-05"
-                  onChange={e => setstartDate(e.target.value)}
-                  value={startDate}
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="form-group">
-                <label>
-                  Fecha de Finalización:
-                </label>
-                <input
-                  type="date"
-                  placeholder="2021-06-05"
-                  onChange={e => setendDate(e.target.value)}
-                  value={endDate}
-                  className="form-control"
-                ></input>
               </div>
               <button className="btn btn-success btn-block">Guardar</button>
             </form>
@@ -103,4 +88,4 @@ const CrearIscripcion = () => {
 )
 }
 
-export default CrearIscripcion
+export default CrearAvance

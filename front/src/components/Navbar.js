@@ -55,10 +55,16 @@ export const Navigation = () => (
           </Link>
         </li>
         <li className="nav-item">
+          <Link className="nav-link" to="/create-avance">
+            Crear Avance
+          </Link>
+        </li>
+        <li className="nav-item">
           <Link className="nav-link" to="/">
             Salir
           </Link>
         </li>
+      
       </ul>
     </div>
   </nav>
