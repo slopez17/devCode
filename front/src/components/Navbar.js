@@ -21,7 +21,12 @@ export const Navigation = () => (
       <ul className="navbar-nav">
         <li className="nav-item">
           <Link className="nav-link" to="/new-usuario">
-            Crear Usuario
+            Registro
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/login">
+            Login
           </Link>
         </li>
         <li className="nav-item">
@@ -37,6 +42,16 @@ export const Navigation = () => (
         <li className="nav-item">
           <Link className="nav-link" to="/inscripciones">
             Inscripciones
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/create-proyect">
+            Crear Proyecto
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/list-proyects">
+            Proyectos
           </Link>
         </li>
       </ul>

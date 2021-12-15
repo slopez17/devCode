@@ -16,7 +16,7 @@ type Proyecto {
   budget: String
   initialDate: String
   finalDate: String
-  leaderId: ID
+  leaderId: String
   leaderName: String
   stateProyect: String
   fase: String
@@ -40,6 +40,8 @@ type Avance {
 }
 
 type Query {
+  "Autenticar usuario"
+  authUser (email: String!, password: String!): Boolean 
   "Devuelve todos los usuarios, puede filtrar por su rol"
   getUsuarios (role: String): [Usuario]
   "Devuelve un usuario"
@@ -81,7 +83,7 @@ input ProyectoInput {
   budget: String!
   initialDate: String!
   finalDate: String!
-  leaderId: ID!
+  leaderId: String!
   leaderName: String!
   stateProyect: String!
   fase: String!
@@ -94,7 +96,7 @@ input ProyectoEditInput {
   budget: String
   initialDate: String
   finalDate: String
-  leaderId: ID
+  leaderId: String
   leaderName: String
   stateProyect: String
   fase: String
