@@ -13,13 +13,6 @@ import { Navigation } from "./components/Navbar";
 
 import "bootswatch/dist/lux/bootstrap.min.css";
 
-
-
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 4edc0a14b7f9f2696dcffc7b7bb89c430dd0cf72
 function App() {
   return (
     <Router>
