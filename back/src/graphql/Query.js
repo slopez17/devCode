@@ -4,20 +4,24 @@ const { ObjectId } = require('mongodb')
 const errorHandler = require('./errorHandler')
 
 module.exports = {
-    authUser: async (root, { email, password }) => {
-        let db;
-        let user;
-        let match = false;
+    authUsuario: async (root, { email, password }) => {
+        const defaults = {
+            access: false
+        };
+        let usuario;
+        let db;  
         try {
             db = await connectDb();
-            user = await db.collection('usuarios').findOne({ email: email });
-            if (user && user.state === 'Autorizado' && user.password === password) {
-                match = true;
-            }
+            usuario = await db.collection('usuarios').findOne({ email: email }); 
+            if (usuario && usuario.state === 'Autorizado' && usuario.password === password) {
+                    usuario.access = true;
+            } else {
+                usuario = Object.assign(defaults);
+            } 
         } catch (error) {
             errorHandler(error);
         }
-        return match;
+        return usuario;
     },
     getUsuarios: async (root, { role }) => {
         let db

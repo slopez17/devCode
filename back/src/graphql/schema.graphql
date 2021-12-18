@@ -3,9 +3,9 @@ type Usuario {
   email: String
   numId: String
   name: String
-  password: String
   role: String
   state: String
+  access: Boolean
 }
 
 type Proyecto {
@@ -39,9 +39,10 @@ type Avance {
   leaderOb: String
 }
 
+
 type Query {
   "Autenticar usuario"
-  authUser (email: String!, password: String!): Boolean 
+  authUsuario (email: String!, password: String!): Usuario 
   "Devuelve todos los usuarios, puede filtrar por su rol"
   getUsuarios (role: String): [Usuario]
   "Devuelve un usuario"

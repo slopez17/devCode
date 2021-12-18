@@ -10,7 +10,6 @@ const GET_USUARIOS = gql`
     name
     email
     numId
-    password
     role
     state
   }
@@ -34,19 +33,17 @@ const UsuariosList = () => {
             <th>name</th>
             <th>email</th>
             <th>Documento</th>
-            <th>Password</th>
             <th>Rol</th>
             <th>Estado</th>
           </tr>
         </thead>
         <tbody>
-          {data.getUsuarios.map(({ _id, name, email, numId, password, role, state }) => (
+          {data.getUsuarios.map(({ _id, name, email, numId, role, state }) => (
             <tr>
               <td>{_id}</td>
               <td>{name}</td>
               <td>{email}</td>
               <td>{numId}</td>
-              <td>{password}</td>
               <td>{role}</td>
               <td>{state}</td>
               {/* <td><button>Edit</button>
