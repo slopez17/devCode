@@ -193,4 +193,4 @@ const CrearProyecto = () => {
 )
 }
 
-export default CrearProyecto
+export default CrearProyecto;

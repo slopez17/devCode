@@ -26,6 +26,7 @@ const UsuariosList = () => {
 
   return (
     <>
+      <div className="container p-4">
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
@@ -51,7 +52,8 @@ const UsuariosList = () => {
             </tr>
           ))}
         </tbody>
-      </Table>
+        </Table>
+      </div>
     </>
   )
 }
