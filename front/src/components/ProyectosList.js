@@ -45,6 +45,10 @@ const ProyectosList = () => {
               <p>{leaderName}</p>
               <p>{stateProyect}</p>
               <p>{fase}</p>
+
+              <Link className="nav-link" to="/new-inscripcion">
+              <button className="btn btn-success btn-block">Inscripcion</button>
+              </Link>
               <Link className="nav-link" to="/avances">
               <button className="btn btn-dark btn-block">Avances</button>
               </Link>

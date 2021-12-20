@@ -36,11 +36,6 @@ export const Navigation = () => (
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/new-inscripcion">
-            Crear Inscripcion
-          </Link>
-        </li>
-        <li className="nav-item">
           <Link className="nav-link" to="/inscripciones">
             Inscripciones
           </Link>
