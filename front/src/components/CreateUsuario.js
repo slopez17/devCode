@@ -3,50 +3,42 @@ import { useMutation } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 
 const CREATE_USUARIO = gql`
-  mutation CreateUsuario($email: String!, $numId: String!, $name: String!, $password: String!, $role: String!, $state: String!) {
+  mutation CreateUsuario($email: String!, $numId: String!, $name: String!, $password: String!, $role: String!) {
   createUsuario(input:{
     email: $email
     numId: $numId
     name: $name
     password: $password
     role: $role
-    state: $state
   }){
-    email
-    numId
     name
-    password
-    role
-    state
   }
 }
 `;
 
-
 const CrearUsuario = () => {
-
-  const [email, setEmail] = useState("")
-  const [numId, setNumId] = useState("")
-  const [name, setName] = useState("")
+  const [name, setName] = useState("");
+  const [numId, setNumId] = useState("");
+  const [email, setEmail] = useState(""); 
   const [password, setPassword] = useState("")
-  const [passwordConfirm, setPasswordConfirm] = useState("")
   const [role, setRole] = useState("")
-  const [state] = useState("Pendiente")
-
   const [createUsuario] = useMutation(CREATE_USUARIO)
   
   return (
-    <div className="row">
-      <div className="col-md-6 offset-md-3">
-        <div className="card">
+    <div className="m-0 vh-100 row justify-content-center align-items-center bg-primary">
+        <div className="card w-25">
           <div className="card-body">
             <form
               onSubmit={async e => {
                 e.preventDefault();
-                await createUsuario({ variables: { email, numId, name, password, role, state } })
-                window.location.href = "/login";
+                await createUsuario({ variables: { name, numId, email, password, role } });
+              /* window.confirm("El usuario " + { name } + "ha sido registrado exitosamente"); */
+                window.location.href = "/";
               }}
             >
+            <h1 class="text-center h2 "> DevCode</h1>
+            <h1 class="text-center h5 ">Registro de usuario</h1>
+            <br></br>
               <div className="form-group">
                 <label>
                   Nombre completo:
@@ -55,7 +47,6 @@ const CrearUsuario = () => {
                   type="text"
                   placeholder="Pedro Perez González"
                   onChange={e => setName(e.target.value)}
-                  value={name}
                   className="form-control"
                 ></input>
               </div>
@@ -66,7 +57,6 @@ const CrearUsuario = () => {
                 <input
                   type="text"
                   placeholder="32685608"
-                  value={numId}
                   onChange={e => setNumId(e.target.value)}
                   className="form-control"
                 />
@@ -78,7 +68,6 @@ const CrearUsuario = () => {
                 <input
                   type="email"
                   placeholder="pedro01@ejemplo.com"
-                  value={email}
                   onChange={e => setEmail(e.target.value)}
                   className="form-control"
                 />
@@ -92,22 +81,9 @@ const CrearUsuario = () => {
                   type="password"
                   placeholder="Contraseña"
                   onChange={e => setPassword(e.target.value)}
-                  value={password}
                   className="form-control"
                 ></input>
               </div>
-              <div className="form-group">
-                <label>
-                  Confirmar contraseña:
-                </label>
-                <input
-                  type="password"
-                  placeholder="Contraseña"
-                  onChange={e => setPasswordConfirm(e.target.value)}
-                  value={passwordConfirm}
-                  className="form-control"
-                ></input>
-              </div>  
               
               <div className="form-group">
                 <label>
@@ -115,7 +91,6 @@ const CrearUsuario = () => {
                 </label>
                 <select
                   onChange={e => setRole(e.target.value)}
-                  value={role}
                   className="form-control"
                 >
                   <option selected disabled="disabled" value=''>Seleccione una opción</option>
@@ -126,7 +101,7 @@ const CrearUsuario = () => {
               </div>
               <div className="form-group">
                 <label>
-                  Estado
+                  Estado:
                 </label>
                 <input
                   readOnly
@@ -134,13 +109,22 @@ const CrearUsuario = () => {
                   value="Pendiente"
                   className="form-control"
                 ></input>
-              </div>
-              <button className="btn btn-success btn-block">Guardar</button>
+            </div>
+            <div class="btn-group d-flex" role="group">
+              <button
+                type="submit"
+                class="btn btn-primary"
+              >Guardar</button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                onClick={e => { window.location.href = "/" }}
+                >Cancelar</button>
+            </div>
             </form>
           </div>
         </div>
       </div>
-    </div>
 )
 }
 

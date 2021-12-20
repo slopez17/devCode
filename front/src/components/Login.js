@@ -5,7 +5,7 @@ import {
   Container,
   FormGroup,
 } from "reactstrap";
-import { useQuery } from "@apollo/react-hooks";
+import { useLazyQuery, useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import { useHistory } from "react-router";
 
@@ -26,7 +26,7 @@ const Login = () => {
   const [loginMessage, setLoginMessge] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { loading, error, data, refetch } = useQuery(AUTH_USUARIO, { variables: { email, password } });
+  const [authUsuario, {loading, error, data }] = useLazyQuery(AUTH_USUARIO);
   
   const [usuario, setUsuario] = useState({
     _id: "",
@@ -49,9 +49,9 @@ const Login = () => {
 
   useEffect(() => {
     if (loading) return;
-    if (usuario.access && login) return (history.replace("/list-users"));
+    if (usuario.access) return (history.replace("/list-users"));
     if (!usuario.access && login) setLoginMessge("Acceso no autorizado, revise los datos ingresados");
-    if (login) setLogin(false);
+    if (!login) setLoginMessge("");
   }, [usuario, login, loading]);
 
   if (error) {
@@ -76,7 +76,7 @@ const Login = () => {
                 className="form-control"
                 name="email"
                 type="text"
-                onChange={e => { setEmail(e.target.value); setLoginMessge(""); }}
+                onChange={e => { setEmail(e.target.value); setLogin(false);}}
                 placeholder="pedro01@ejemplo.com"
                 required
               />
@@ -90,15 +90,15 @@ const Login = () => {
                 name="password"
                 type="password"
                 placeholder="xxxxxxxxx"
-                onChange={e => { setPassword(e.target.value); setLoginMessge(""); }}
+                onChange={e => { setPassword(e.target.value); setLogin(false); }}
                 required
               />
             </FormGroup>
             <div class="col text-center">
               <Button
-                color="primary"
-                type="submit"
-                onClick={e => setLogin(true)}
+              color="primary"
+              type="submit"
+              onClick={e => { authUsuario({ variables: { email, password }}); setLogin(true); }}
               >
                 Ingresar
               </Button>

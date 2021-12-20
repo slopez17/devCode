@@ -1,11 +1,11 @@
 type Usuario {
-  _id: ID
-  email: String
+  _id: ID!
+  email: String!
   numId: String
   name: String
-  role: String
-  state: String
-  access: Boolean
+  role: String!
+  state: String!
+  access: Boolean!
 }
 
 type Proyecto {
@@ -67,7 +67,6 @@ input UsuarioInput {
   name: String!
   password: String!
   role: String!
-  state: String!
 }
 
 input UsuarioEditInput {
