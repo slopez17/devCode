@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 export const Navigation = () => (
   <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -24,7 +24,6 @@ export const Navigation = () => (
             Usuarios
           </Link>
         </li>
-        
         <li className="nav-item">
           <Link className="nav-link" to="/create-proyect">
             Crear Proyecto
@@ -45,7 +44,6 @@ export const Navigation = () => (
             Salir
           </Link>
         </li>
-      
       </ul>
     </div>
   </nav>
