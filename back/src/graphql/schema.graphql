@@ -69,6 +69,7 @@ input UsuarioInput {
   name: String!
   password: String!
   role: String!
+  sate: String
 }
 
 input UsuarioEditInput {
@@ -76,6 +77,8 @@ input UsuarioEditInput {
   numId: String
   name: String
   password: String
+  role: String
+  state: String
 }
 
 input ProyectoInput {

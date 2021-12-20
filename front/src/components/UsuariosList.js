@@ -15,6 +15,19 @@ const GET_USUARIOS = gql`
   }
   }
 `
+// const EDIT_USUARIO = gql`
+//   mutation EditUsuario(
+//     $_id: ID
+//     $state: String
+//   ) { mutation{
+//   editUsuario(_id: $_id, input:{
+//     state: $state
+//   }){
+//     state
+//   }
+// }
+//   }
+// `;
 
 const UsuariosList = () => {
 
@@ -29,31 +42,30 @@ const UsuariosList = () => {
       <br></br>
       <center><h2>Lista de Usuarios</h2></center>
       <div className="container p-4">
-      <Table striped bordered hover size="sm">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>name</th>
-            <th>email</th>
-            <th>Documento</th>
-            <th>Rol</th>
-            <th>Estado</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.getUsuarios.map(({ _id, name, email, numId, role, state }) => (
+        <Table striped bordered hover size="sm">
+          <thead>
             <tr>
-              <td>{_id}</td>
-              <td>{name}</td>
-              <td>{email}</td>
-              <td>{numId}</td>
-              <td>{role}</td>
-              <td>{state}</td>
-              {/* <td><button>Edit</button>
-                <button>Delete</button></td> */}
+              <th>ID</th>
+              <th>name</th>
+              <th>email</th>
+              <th>Documento</th>
+              <th>Rol</th>
+              <th>Estado</th>
             </tr>
-          ))}
-        </tbody>
+          </thead>
+          <tbody>
+            {data.getUsuarios.map(({ _id, name, email, numId, role, state }) => (
+              <tr>
+                <td>{_id}</td>
+                <td>{name}</td>
+                <td>{email}</td>
+                <td>{numId}</td>
+                <td>{role}</td>
+                <td>{state}</td>
+                {/* <td><button onClick={ () => cambioRol(usuarios)  }>Editar Rol</button></td> */}
+              </tr>
+            ))}
+          </tbody>
         </Table>
       </div>
     </>
