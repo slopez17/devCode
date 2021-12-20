@@ -57,8 +57,10 @@ type Query {
   getInscripcion(id: ID!): Inscripcion
   "Devuelve todos los Avances"
   getAvances: [Avance]
-  "Devuelve un avaces"
+  "Devuelve un avance"
   getAvance(id: ID!): Avance
+    "Devuelve los avances por Proyecto"
+  getAvanceProyect(projectId:[ID]): [Avance]
 }
 
 input UsuarioInput {

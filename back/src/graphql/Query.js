@@ -113,5 +113,18 @@ module.exports = {
             errorHandler(error)
         }
         return avance
+    },
+    getAvanceProyect: async (root, { projectId }) => {
+        let db
+        let avances = []
+        try {
+            db = await connectDb()
+            avances = await db.collection('avances').find({ projectId: { $in: projectId }}).toArray()
+        } catch (error) {
+            errorHandler(error)
+        }
+        return avances
     }
+
+
 }
