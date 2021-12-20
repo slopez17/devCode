@@ -1,6 +1,7 @@
 import React  from "react"
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost"
+import {Link} from 'react-router-dom'
 
 const GET_AVANCES = gql `
   {
@@ -24,7 +25,9 @@ const AvanceList = () => {
     }
     
     return (
+    
     <div className="row">
+     
       <div className="col-md-6 offset-md-3">
         {
           data.getAvances.map(({_id, projectId, description, advanceDate, leaderOb}) => (
@@ -38,7 +41,11 @@ const AvanceList = () => {
           </div>
           ))
         }
+          <Link className="nav-link" to="/create-avance">
+      <button className="btn btn-success btn-block">Crear nuevo avance</button>
+      </Link>
       </div>
+      
     </div>
     )
 }

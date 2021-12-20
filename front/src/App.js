@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Navigation } from "./components/Navbar";
 
 import "bootswatch/dist/lux/bootstrap.min.css";
+import AvanceList from "./components/AvancesList";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
             <Route exact path="/list-proyects" component={ProyectosList} />
             <Route exact path="/create-proyect" component={CrearProyecto} />
             <Route exact path="/create-avance" component={CrearAvance} />
+            <Route exact path="/avances" component={AvanceList} />
           </div>
         </Switch>
       </div>

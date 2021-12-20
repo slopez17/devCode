@@ -1,6 +1,7 @@
 import React from "react"
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost"
+import {Link} from 'react-router-dom'
 
 const GET_PROYECTOS = gql`
   {
@@ -44,6 +45,10 @@ const ProyectosList = () => {
               <p>{leaderName}</p>
               <p>{stateProyect}</p>
               <p>{fase}</p>
+              <Link className="nav-link" to="/avances">
+              <button className="btn btn-dark btn-block">Avances</button>
+              </Link>
+
             </div>
           </div>
         ))}
