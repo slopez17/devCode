@@ -48,6 +48,9 @@ const CrearProyecto = () => {
   const [createProyecto] = useMutation(CREATE_PROYECT)
   
   return (
+    <>
+    <br></br>
+    <center><h2>Crear Proyecto</h2></center>
     <div className="row">
       <div className="col-md-6 offset-md-3">
         <div className="card">
@@ -190,6 +193,7 @@ const CrearProyecto = () => {
         </div>
       </div>
     </div>
+    </>
 )
 }
 

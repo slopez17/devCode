@@ -34,6 +34,9 @@ const CrearIscripcion = () => {
     const [createInscripcion] = useMutation(CREATE_INSCRIPCION);
 
     return (
+      <>
+      <br></br>
+      <center><h2>Crear Avance</h2></center>
     <div className="row">
       <div className="col-md-6 offset-md-3">
         <div className="card">
@@ -102,6 +105,7 @@ const CrearIscripcion = () => {
         </div>
       </div>
     </div>
+    </>
 )
 }
 

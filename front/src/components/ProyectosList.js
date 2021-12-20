@@ -30,21 +30,25 @@ const ProyectosList = () => {
   }
 
   return (
+    <>
+    <br></br>
+    <center><h2>Proyectos Registrados</h2></center>
     <div className="row">
       <div className="col-md-8 offset-md-2">
         {data.getProyectos.map(({ _id, projectName, generalObjective, specificObjetive, budget, initialDate, finalDate, leaderId, leaderName, stateProyect, fase}) => (
           <div key={_id} className="card m-2">
             <div className="card-body">
-              <h4>{projectName}</h4>
-              <p>{generalObjective}</p>
-              <p>{specificObjetive}</p>
-              <p>{budget}</p>
-              <p>{initialDate}</p>
-              <p>{finalDate}</p>
-              <p>{leaderId}</p>
-              <p>{leaderName}</p>
-              <p>{stateProyect}</p>
-              <p>{fase}</p>
+              <center><h4>{projectName}</h4></center>
+              <br></br>
+              <h6>Objetivo General: </h6><p>{generalObjective}</p>
+              <h6>Objetivo Especifico: </h6><p>{specificObjetive}</p>
+              <h6>Presupuesto: </h6><p>{budget}</p>
+              <h6>Fecha de Inicio: </h6><p>{initialDate}</p>
+              <h6>Fecha de Finalización: </h6><p>{finalDate}</p>
+              <h6>ID Lider: </h6><p>{leaderId}</p>
+              <h6>Nombre del Lider: </h6><p>{leaderName}</p>
+              <h6>Estado: </h6><p>{stateProyect}</p>
+              <h6>Fase: </h6><p>{fase}</p>
 
               <Link className="nav-link" to="/new-inscripcion">
               <button className="btn btn-success btn-block">Inscripcion</button>
@@ -58,6 +62,7 @@ const ProyectosList = () => {
         ))}
       </div>
     </div>
+    </>
   )
 }
 

@@ -26,6 +26,8 @@ const UsuariosList = () => {
 
   return (
     <>
+      <br></br>
+      <center><h2>Lista de Usuarios</h2></center>
       <div className="container p-4">
       <Table striped bordered hover size="sm">
         <thead>

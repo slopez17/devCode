@@ -1,6 +1,7 @@
 import React  from "react"
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost"
+import Table from 'react-bootstrap/Table'
 
 const GET_INSCRIPCIONES = gql `
   {
@@ -18,31 +19,47 @@ const GET_INSCRIPCIONES = gql `
 
 const InscripcionesList = () => {
     
-    const { loading, error, data } = useQuery(GET_INSCRIPCIONES)
-    if (loading) return <p>Loading Messages...</p>;
-    if (error) {
+  const { loading, error, data } = useQuery(GET_INSCRIPCIONES)
+  if (loading) return <p>Loading Messages...</p>;
+  if (error) {
     return <p>Error</p>;
-    }
-    
-    return (
-    <div className="row">
-      <div className="col-md-6 offset-md-3">
-        {
-          data.getInscripciones.map(({_id, projectId, studentId,state, startDate, endDate}) => (
-            <div key={_id} className="card m-2">
-            <div className="card-body">
-              <h4>{projectId}</h4>
-              <p>{studentId}</p>
-              <p>{state}</p>
-              <p>{startDate}</p>
-              <p>{endDate}</p>
-            </div>
-          </div>
-          ))
-        }
+  }
+
+  return (
+    <>
+      <br></br>
+      <center><h2>Listado de Inscripciones</h2></center>
+      <div className="container p-4">
+      <Table striped bordered hover size="sm">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>ID Proyecto</th>
+            <th>ID Estudiante</th>
+            <th>Estado</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Fin</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.getInscripciones.map(({_id, projectId, studentId,state, startDate, endDate}) => (
+            <tr>
+              <td>{_id}</td>
+              <td>{projectId}</td>
+              <td>{studentId}</td>
+              <td>{state}</td>
+              <td>{startDate}</td>
+              <td>{endDate}</td>
+              {/* <td><button>Edit</button>
+                <button>Delete</button></td> */}
+            </tr>
+          ))}
+        </tbody>
+        </Table>
       </div>
-    </div>
-    )
+    </>
+  )
 }
+
 
 export default InscripcionesList
