@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Alert, Button, Container, FormGroup } from "reactstrap";
 import { useLazyQuery, useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import { useHistory } from "react-router";
+import usuarioContext from "./usuarioContext";
 
 const AUTH_USUARIO = gql`
   query AuthUsuario($email: String!, $password: String!) {
     authUsuario(email: $email, password: $password) {
+      email
+      role
       access
     }
   }
@@ -19,33 +22,20 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [authUsuario, { loading, error, data }] = useLazyQuery(AUTH_USUARIO);
-
-  const [usuario, setUsuario] = useState({
-    _id: "",
-    email: "",
-    numId: "",
-    name: "",
-    role: "",
-    state: "",
-    access: false,
-  });
+  const context = useContext(usuarioContext);
+ 
 
   useEffect(() => {
-    if (data) {
-      setUsuario({
-        ...usuario,
-        access: data.authUsuario.access,
-      });
-    }
+    context.updateUsuario(data);
   }, [data]);
 
   useEffect(() => {
     if (loading) return;
-    if (usuario.access) return history.replace("/list-users");
-    if (!usuario.access && login)
+    if (context.usuario.access) return history.replace("/list-users");
+    if (!context.usuario.access && login)
       setLoginMessge("Acceso no autorizado, revise los datos ingresados");
     if (!login) setLoginMessge("");
-  }, [usuario, login, loading]);
+  }, [context.usuario, login, loading]);
 
   if (error) {
     return <Alert color="danger">Error :(</Alert>;
