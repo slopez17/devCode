@@ -1,1 +1,2 @@
-Hola, mi nombre es Jhon Alejandro Diaz, soy Ingeniero químico, actualmente vivo en Medellín.
+Hola, mi nombre es Jhon Alejandro Diaz, soy Ingeniero químico, actualmente vivo en Medellín. 
+Trabajo como analista de proyectos.
