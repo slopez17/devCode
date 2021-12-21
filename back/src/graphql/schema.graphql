@@ -145,7 +145,7 @@ type Mutation {
   "Crea un Proyecto"
   createProyecto(input: ProyectoInput!): Proyecto
   "Editar o Actualizar Proyecto"
-  editProyecto(_id: ID!, input: ProyectoEditInput): Proyecto
+  editProyecto(_id: String, input: ProyectoEditInput): Proyecto
     "Crea una Inscripcion"
   createInscripcion(input: InscripcionInput!): Inscripcion
   "Editar o Actualizar una Inscripcion"
