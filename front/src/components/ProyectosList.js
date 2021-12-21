@@ -42,6 +42,7 @@ const ProyectosList = () => {
             <div className="card-body">
               <center><h4>{projectName}</h4></center>
               <br></br>
+              <h6>ID: </h6><p>{_id}</p>
               <h6>Objetivo General: </h6><p>{generalObjective}</p>
               <h6>Objetivo Especifico: </h6><p>{specificObjetive}</p>
               <h6>Presupuesto: </h6><p>{budget}</p>

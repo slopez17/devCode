@@ -38,13 +38,14 @@ const UsuariosList = () => {
       <p>Hola! {context.usuario.email}</p>
       <center><h3>Lista de Usuarios </h3></center>
       <br></br>
-      {/* <center><EditarUsuario/></center> */}
+      <center><EditarUsuario/></center>
+      <br></br>
       <center>
         <div class="container">
           <table class="table table-striped table-bordered table-hover table-sm"> 
             <thead class="table-dark">
               <tr>
-                <th scope="col">#</th>
+                <th scope="col">ID</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Documento de identidad</th>
                 <th scope="col">Correo Electrónico</th>
@@ -56,8 +57,11 @@ const UsuariosList = () => {
             <tbody>
               {data.getUsuarios.map(({ _id, name, email, numId, role, state }, index) => (
                 <tr key={_id}>
-                  <td
+                  {/* <td
                     class="text-center align-middle" scope="row">{index + 1}
+                  </td> */}
+                  <td class="align-middle">
+                    {_id}
                   </td>
                   <td class="align-middle">
                     {name}
