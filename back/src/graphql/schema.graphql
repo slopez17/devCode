@@ -1,11 +1,11 @@
 type Usuario {
-  _id: ID
-  email: String
+  _id: ID!
+  email: String!
   numId: String
   name: String
-  password: String
-  role: String
-  state: String
+  role: String!
+  state: String!
+  access: Boolean!
 }
 
 type Proyecto {
@@ -16,7 +16,7 @@ type Proyecto {
   budget: String
   initialDate: String
   finalDate: String
-  leaderId: ID
+  leaderId: String
   leaderName: String
   stateProyect: String
   fase: String
@@ -39,7 +39,10 @@ type Avance {
   leaderOb: String
 }
 
+
 type Query {
+  "Autenticar usuario"
+  authUsuario (email: String!, password: String!): Usuario 
   "Devuelve todos los usuarios, puede filtrar por su rol"
   getUsuarios (role: String): [Usuario]
   "Devuelve un usuario"
@@ -54,8 +57,10 @@ type Query {
   getInscripcion(id: ID!): Inscripcion
   "Devuelve todos los Avances"
   getAvances: [Avance]
-  "Devuelve un avaces"
+  "Devuelve un avance"
   getAvance(id: ID!): Avance
+    "Devuelve los avances por Proyecto"
+  getAvanceProyect(projectId:[ID]): [Avance]
 }
 
 input UsuarioInput {
@@ -64,7 +69,7 @@ input UsuarioInput {
   name: String!
   password: String!
   role: String!
-  state: String!
+  sate: String
 }
 
 input UsuarioEditInput {
@@ -72,6 +77,8 @@ input UsuarioEditInput {
   numId: String
   name: String
   password: String
+  role: String
+  state: String
 }
 
 input ProyectoInput {
@@ -81,7 +88,7 @@ input ProyectoInput {
   budget: String!
   initialDate: String!
   finalDate: String!
-  leaderId: ID!
+  leaderId: String!
   leaderName: String!
   stateProyect: String!
   fase: String!
@@ -94,7 +101,7 @@ input ProyectoEditInput {
   budget: String
   initialDate: String
   finalDate: String
-  leaderId: ID
+  leaderId: String
   leaderName: String
   stateProyect: String
   fase: String
@@ -134,7 +141,7 @@ type Mutation {
   "Crea un usuario"
   createUsuario(input: UsuarioInput!): Usuario
   "Editar o Actualizar Usuario"
-  editUsuario(_id: ID!, input: UsuarioEditInput): Usuario
+  editUsuario(_id: String, input: UsuarioEditInput): Usuario
   "Crea un Proyecto"
   createProyecto(input: ProyectoInput!): Proyecto
   "Editar o Actualizar Proyecto"

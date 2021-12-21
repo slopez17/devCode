@@ -1,10 +1,28 @@
-'use strict'
-
-const connectDb = require('../lib/db')
+// import Message from "../../models/Message";
+const connectDb = require('./database')
 const { ObjectId } = require('mongodb')
 const errorHandler = require('./errorHandler')
 
 module.exports = {
+    authUsuario: async (root, { email, password }) => {
+        const defaults = {
+            access: false
+        };
+        let usuario;
+        let db;  
+        try {
+            db = await connectDb();
+            usuario = await db.collection('usuarios').findOne({ email: email }); 
+            if (usuario && usuario.state === 'Autorizado' && usuario.password === password) {
+                    usuario.access = true;
+            } else {
+                usuario = Object.assign(defaults);
+            } 
+        } catch (error) {
+            errorHandler(error);
+        }
+        return usuario;
+    },
     getUsuarios: async (root, { role }) => {
         let db
         let usuarios = []
@@ -55,7 +73,7 @@ module.exports = {
         let inscripciones = []
         try {
             db = await connectDb()
-            inscripciones = projectId.length > 0 ?
+            inscripciones = projectId ?
                 await db.collection('inscripciones').find({ projectId: { $in: projectId } }).toArray() :
                 await db.collection('inscripciones').find().toArray()
         } catch (error) {
@@ -96,4 +114,17 @@ module.exports = {
         }
         return avance
     },
+    getAvanceProyect: async (root, { projectId }) => {
+        let db
+        let avances = []
+        try {
+            db = await connectDb()
+            avances = await db.collection('avances').find({ projectId: { $in: projectId }}).toArray()
+        } catch (error) {
+            errorHandler(error)
+        }
+        return avances
+    }
+
+
 }
