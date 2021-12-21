@@ -1,7 +1,8 @@
 import React from "react"
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery} from "@apollo/react-hooks";
 import { gql } from "apollo-boost"
 import Table from 'react-bootstrap/Table'
+import EditarUsuario from "./EditUsuario";
 
 const GET_USUARIOS = gql`
   {
@@ -15,19 +16,6 @@ const GET_USUARIOS = gql`
   }
   }
 `
-// const EDIT_USUARIO = gql`
-//   mutation EditUsuario(
-//     $_id: ID
-//     $state: String
-//   ) { mutation{
-//   editUsuario(_id: $_id, input:{
-//     state: $state
-//   }){
-//     state
-//   }
-// }
-//   }
-// `;
 
 const UsuariosList = () => {
 
@@ -37,10 +25,12 @@ const UsuariosList = () => {
     return <p>Error</p>;
   }
 
+
   return (
     <>
       <br></br>
       <center><h2>Lista de Usuarios</h2></center>
+      <center><EditarUsuario/></center>
       <div className="container p-4">
         <Table striped bordered hover size="sm">
           <thead>

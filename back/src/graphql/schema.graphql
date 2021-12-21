@@ -141,7 +141,7 @@ type Mutation {
   "Crea un usuario"
   createUsuario(input: UsuarioInput!): Usuario
   "Editar o Actualizar Usuario"
-  editUsuario(_id: ID!, input: UsuarioEditInput): Usuario
+  editUsuario(_id: String, input: UsuarioEditInput): Usuario
   "Crea un Proyecto"
   createProyecto(input: ProyectoInput!): Proyecto
   "Editar o Actualizar Proyecto"

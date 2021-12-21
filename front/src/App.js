@@ -13,6 +13,7 @@ import { Navigation } from "./components/Navbar";
 
 import "bootswatch/dist/lux/bootstrap.min.css";
 import AvanceList from "./components/AvancesList";
+import EditarUsuario from "./components/EditUsuario";
 
 
 function App() {
