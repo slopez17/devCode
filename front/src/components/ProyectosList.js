@@ -2,6 +2,7 @@ import React from "react"
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost"
 import {Link} from 'react-router-dom'
+import EditarProyecto from "./EditProyecto";
 
 const GET_PROYECTOS = gql`
   {
@@ -33,6 +34,7 @@ const ProyectosList = () => {
     <>
     <br></br>
     <center><h2>Proyectos</h2></center>
+    <EditarProyecto/>
     <div className="row">
       <div className="col-md-8 offset-md-2">
         {data.getProyectos.map(({ _id, projectName, generalObjective, specificObjetive, budget, initialDate, finalDate, leaderId, leaderName, stateProyect, fase}) => (
@@ -40,6 +42,7 @@ const ProyectosList = () => {
             <div className="card-body">
               <center><h4>{projectName}</h4></center>
               <br></br>
+              <h6>ID: </h6><p>{_id}</p>
               <h6>Objetivo General: </h6><p>{generalObjective}</p>
               <h6>Objetivo Especifico: </h6><p>{specificObjetive}</p>
               <h6>Presupuesto: </h6><p>{budget}</p>
